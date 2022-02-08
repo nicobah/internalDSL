@@ -1,31 +1,46 @@
 package main.metamodel;
 
-import java.util.List;
+import java.util.*;
 
 public class Machine {
 
+	private List<State> states = new ArrayList<State>();
+	private State initialState;
+	private Map<Integer, String> integers = new HashMap<>();
+
+	public Machine(Collection<State> states, State initialState, Map<Integer,String> integers) {
+		super();
+		this.states.addAll(states);
+		this.initialState = initialState;
+		this.integers = integers;
+	}
+
 	public List<State> getStates() {
-		// TODO Auto-generated method stub
-		return null;
+		return states;
 	}
 
 	public State getInitialState() {
-		// TODO Auto-generated method stub
-		return null;
+		return initialState;
 	}
 
 	public State getState(String string) {
-		// TODO Auto-generated method stub
-		return null;
+		State state = null;
+		for(State s: states){
+			if(s.getName() == string){
+				state = s;
+			}
+		}
+		return state;
 	}
 
 	public int numberOfIntegers() {
-		// TODO Auto-generated method stub
-		return 0;
+		return integers.size();
 	}
 
 	public boolean hasInteger(String string) {
-		// TODO Auto-generated method stub
+		if(integers.containsValue(string)){
+			return true;
+		}
 		return false;
 	}
 
