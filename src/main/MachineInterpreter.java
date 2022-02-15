@@ -2,26 +2,32 @@ package main;
 
 import main.metamodel.Machine;
 import main.metamodel.State;
+import main.metamodel.Transition;
 
 public class MachineInterpreter {
 
+	private State current;
+
 	public void run(Machine m) {
-		// TODO Auto-generated method stub
+		current = m.getInitialState();
+
 		
 	}
 
 	public State getCurrentState() {
-		// TODO Auto-generated method stub
-		return null;
+		return current;
 	}
 
 	public void processEvent(String string) {
-		// TODO Auto-generated method stub
-		
+		for(Transition t: current.getTransitions()){
+			if(t.getEvent() == string){
+				current = t.getTarget();
+			}
+		}
 	}
 
 	public int getInteger(String string) {
-		// TODO Auto-generated method stub
+
 		return 0;
 	}
 

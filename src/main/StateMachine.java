@@ -5,13 +5,15 @@ import main.metamodel.State;
 import main.metamodel.Transition;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class StateMachine {
 
     private Map<String, State> states = new HashMap<>();
-    private Map<Integer, String> values = new HashMap<>();
-
+//    private Map<Integer, String> values = new HashMap<>();
+    private Set<String> values = new HashSet<>();
     private State current;
     private State initial;
     private String currentEvent;
@@ -20,10 +22,10 @@ public class StateMachine {
         if (!states.containsKey(name)) states.put(name, new State(name));
         return states.get(name);
     }
-    private String getInt(String string){
-        if (!values.containsKey(string)) values.put(0, string);
-        return values.get(string);
-    }
+//    private String getInt(String string){
+//        if (!values.containsKey(string)) values.put(0, string);
+//        return values.get(string);
+//    }
 
 
     public Machine build() {
@@ -52,13 +54,13 @@ public class StateMachine {
     }
 
     public StateMachine integer(String string) {
-        currentInt = getInt(string);
+        values.add(string);
         return this;
     }
 
     public StateMachine set(String string, int i) {
-        // TODO Auto-generated method stub
-        return null;
+        values.add(string);
+        return this;
     }
 
     public StateMachine increment(String string) {

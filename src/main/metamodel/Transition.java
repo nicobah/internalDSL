@@ -3,6 +3,7 @@ package main.metamodel;
 public class Transition {
 	private String event;
 	private State target;
+	private String operationVariable;
 
 	public Transition(String event, State target) {
 		super();
@@ -19,7 +20,9 @@ public class Transition {
 	}
 
 	public boolean hasSetOperation() {
-		// TODO Auto-generated method stub
+		if(getTarget() != null){
+			return true;
+		}
 		return false;
 	}
 
@@ -34,7 +37,6 @@ public class Transition {
 	}
 
 	public Object getOperationVariableName() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
