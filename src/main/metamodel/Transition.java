@@ -10,6 +10,9 @@ public class Transition {
 		this.event = event;
 		this.target = target;
 	}
+	public void setOperationVariable(String string){
+		operationVariable = string;
+	}
 
 	public Object getEvent() {
 		return event;
@@ -37,7 +40,7 @@ public class Transition {
 	}
 
 	public Object getOperationVariableName() {
-		return null;
+		return operationVariable;
 	}
 
 	public boolean isConditional() {

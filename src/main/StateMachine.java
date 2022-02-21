@@ -12,8 +12,7 @@ import java.util.Set;
 public class StateMachine {
 
     private Map<String, State> states = new HashMap<>();
-//    private Map<Integer, String> values = new HashMap<>();
-    private Set<String> values = new HashSet<>();
+    private Map<String, Integer> values = new HashMap<>();
     private State current;
     private State initial;
     private String currentEvent;
@@ -54,12 +53,14 @@ public class StateMachine {
     }
 
     public StateMachine integer(String string) {
-        values.add(string);
+        values.put(string, 0);
         return this;
     }
 
     public StateMachine set(String string, int i) {
-        values.add(string);
+        Transition t = current.getTransitionByEvent(string);
+        t.setOperationVariable(string);
+        values.put(string, i);
         return this;
     }
 

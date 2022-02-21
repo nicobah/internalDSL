@@ -6,9 +6,9 @@ import java.util.*;
 
 		private List<State> states = new ArrayList<State>();
 		private State initialState;
-		private Set<String> integers;
+		private Map<String, Integer> integers;
 
-	public Machine(Collection<State> states, State initialState, Set<String> integers) {
+	public Machine(Collection<State> states, State initialState, Map<String, Integer> integers) {
 		super();
 		this.states.addAll(states);
 		this.initialState = initialState;
@@ -39,7 +39,7 @@ import java.util.*;
 	}
 
 	public boolean hasInteger(String string) {
-		if(integers.contains(string)){
+		if(integers.containsKey(string)){
 			return true;
 		}
 		return false;
